@@ -1,7 +1,10 @@
 /***************************************************************************************************************
 Title: Polynomial Multiplication Assignment1
+
 Author: Chris Hamburger
-created: 2/24/17
+
+Created: 2/24/17
+
 Description: Given a formatted text file as an argument, this program parses through it and creates Polynomials, 
              muliplying them, and prints them out based on the text file supplied at the command line.
 
@@ -20,6 +23,33 @@ To run: copy command inside the brackets [./assignment1 name_of_text_file_argume
 
 #include "Poly.h"
 
+//copy constructor 
+Poly::Poly(const Poly& p){
+	this->terms.assign(p.terms.begin(), p.terms.end());
+}
+
+//default Zero-polynomial constructor
+Poly::Poly(){
+	Term curr; 
+	curr.setVals(0, 0); 
+	insertTerm(curr);
+}
+
+//single term constructor for a single non-zero polynomial
+Poly::Poly(int p, int q){
+	if(p!=0){
+		Term curr; 
+		curr.setVals(p, q); 
+		insertTerm(curr);
+	}
+}
+
+//overloads the = operator to assign terms in argument Poly P to calling Poly
+Poly Poly::operator=(const Poly &p){//working
+
+	this->terms.assign(p.terms.begin(), p.terms.end());
+	return *this;
+}
 
 //evaluate function that takes double as parameter
 //iterates through calling Poly object's list container-performs mathematical operations
@@ -76,42 +106,13 @@ Poly Poly::operator*(const Poly &p){
 	for(auto &x: coefExpPairs){
 		newPoly->insertNewTerm(x.second, x.first);
 	}
-	
+
 	return *newPoly;
 }
 
-//copy constructor 
-Poly::Poly(const Poly& p){
-	this->terms.assign(p.terms.begin(), p.terms.end());
-}
-
-//default Zero-polynomial constructor
-Poly::Poly(){
-	Term curr; 
-	curr.setVals(0, 0); 
-	insertTerm(curr);
-}
-
-//single term constructor for a single non-zero polynomial
-Poly::Poly(int p, int q){
-	if(p!=0){
-		Term curr; 
-		curr.setVals(p, q); 
-		insertTerm(curr);
-	}
-}
-//overloads the = operator to assign terms in argument Poly P to calling Poly
-Poly Poly::operator=(const Poly &p){//working
-
-	this->terms.assign(p.terms.begin(), p.terms.end());
-	return *this;
-}
-
-
-
 //iterating through list to combine like terms
-//need to make sure iterator is valid or seg so iteratro set if erase condition met
-//if not iterate through list
+//need to make sure iterator is valid or seg so iterator
+//set if erase condition met if not iterate through list
 void Poly::combineLikeTerms(){
 	map<int, int> coefExpPairs;
 	for(list<Poly::Term>::iterator itP=terms.begin(); itP!=terms.end(); ){
@@ -158,7 +159,6 @@ ostream& operator<<(ostream &out, Poly &p){
 	}
 	return out;
 }
-
 
 #endif
 

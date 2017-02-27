@@ -1,7 +1,10 @@
 /***************************************************************************************************************
 Title: Polynomial Multiplication Assignment1
+
 Author: Chris Hamburger
-created: 2/24/17
+
+Created: 2/24/17
+
 Description: Given a formatted text file as an argument, this program parses through it and creates Polynomials, 
              muliplying them, and prints them out based on the text file supplied at the command line.
 
@@ -47,14 +50,14 @@ else{
 if(!inFile){
 	cerr<<"File unable to be opened"<<endl;
 }
-else{
+else{	//parse file getting line
 	while(getline(inFile, line)){ //get the line
 		count++;
 		unsigned int index;
 		string first, symbol;
 		istringstream   linestream(line);
 		linestream>>first;
-
+		//first item in the linestream will either be string eval, print, or int index(converted using std::stoi 
 		if(first=="eval"){
 			int x;
 			string paren;
@@ -67,6 +70,8 @@ else{
 			cout<<count<<". Poly["<<index<<"]= "<<*vectorOfPolys.at(index)<<endl;
 		}	
 		else{
+			//try to convert the string to an int
+			//should never fail if file formatted correctly but handle exception nonetheless
 			try{
 				index=stoi(first);
 			}
@@ -92,8 +97,6 @@ else{
 				}
 				Poly *newPoly=new Poly;
 
-//if exp =0 then times by 1
-
 				//check index Zero Poly-if 0 terms then uninitialized-set to Zero poly
 				//uses stl set to confirm if an index in vecor holds a poly object
 				//if not, create a zero poly and store at index
@@ -106,7 +109,7 @@ else{
 					vectorOfPolys.at(y)=newZeroPoly;
 				}					
 
-				//derefernce pointers
+				//derefernce pointers 
 				(*newPoly)=*vectorOfPolys.at(x)**vectorOfPolys.at(y);
 				vectorOfPolys.at(index)=newPoly;
 				usedIndices.insert(index);
@@ -137,6 +140,12 @@ else{
 			
 		}//end else
 	}//end of while
+}
+
+
+//deallocate dynamically allocated memory
+for(unsigned int i=0; i<vectorOfPolys.size(); i++){
+	delete vectorOfPolys.at(i);
 }
 
 return 0;

@@ -1,7 +1,10 @@
 /***************************************************************************************************************
 Title: Polynomial Multiplication Assignment1
+
 Author: Chris Hamburger
-created: 2/24/17
+
+Created: 2/24/17
+
 Description: Given a formatted text file as an argument, this program parses through it and creates Polynomials, 
              muliplying them, and prints them out based on the text file supplied at the command line.
 
@@ -11,7 +14,7 @@ Compile: Navigate to the program directory and run the make command to create an
 
 Executable name: assignment1
 
-To run: copy command inside the brackets [./assignment1 <name_of_text_file_argument.txt>]
+To run: copy command inside the brackets [./assignment1 "name_of_text_file_argument.txt"]
 
 *****************************************************************************************************************/
 
