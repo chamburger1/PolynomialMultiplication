@@ -63,10 +63,18 @@ else{	//parse file getting line
 			string paren;
 			double value;
 			linestream>>x>>paren>>value;
+			if(usedIndices.count(x)==0){
+				Poly *newZeroPoly=new Poly;
+				vectorOfPolys.at(x)=newZeroPoly;
+			}
 			cout<<count<<". Eval: Poly["<<x<<"]("<<value<<")= "<<vectorOfPolys.at(x)->eval(value)<<endl;
 		}
 		else if(first=="print"){
 			linestream>>index;
+			if(usedIndices.count(index)==0){
+				Poly *newZeroPoly=new Poly;
+				vectorOfPolys.at(index)=newZeroPoly;
+			}
 			cout<<count<<". Poly["<<index<<"]= "<<*vectorOfPolys.at(index)<<endl;
 		}	
 		else{
