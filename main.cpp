@@ -32,7 +32,7 @@ using namespace std;
 int main (int argc, char *argv[]){
 set <int> usedIndices;
 
-vector<Poly*> vectorOfPolys(100);
+vector<Poly*> vectorOfPolys(100);				
 
 ifstream inFile;
 string line, filename;
