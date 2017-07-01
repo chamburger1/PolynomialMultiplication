@@ -12,10 +12,6 @@ Purpose: To practice desiging and implemengting classes and using existing class
 
 Compile: Navigate to the program directory and run the make command to create an executable file.
 
-Executable name: assignment1
-
-To run: copy command inside the brackets [./assignment1 name_of_text_file_argument.txt]
-
 *****************************************************************************************************************/
 
 #include <iostream>
