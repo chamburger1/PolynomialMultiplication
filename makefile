@@ -5,7 +5,7 @@ CFLAGS = -c -Wall
 # Edit the following SOURCES variable to include all of the .cpp files to compile
 SOURCES = main.cpp Poly.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
-EXECUTABLE_NAME = assignment1
+EXECUTABLE_NAME = PolynomialMultiplication
 
 all: $(EXECUTABLE_NAME)
 
